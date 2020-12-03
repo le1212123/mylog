@@ -36,7 +36,7 @@
           </div>
           <div class="nav-collapse">
             <ul class="nav">
-			<li><a href="#">博客首页</a></li>
+			<li><a href="{{action('Home\IndexController@index')}}">博客首页</a></li>
               <li><a href="{{action('Admin\ArticleController@addArticle')}}">添加文章</a>
 			  </li>
               <li><a href="{{action('Admin\ItemController@addItems')}}">添加分类</a>
@@ -72,7 +72,7 @@
       <hr>
 
       <footer class="well">
-        &copy; 该模板来自: <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+       <p> © 2020 滚学球</p>
       </footer>
 
     </div>

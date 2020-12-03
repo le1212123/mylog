@@ -14,7 +14,7 @@ class ArticleController extends Controller
     public function content($id)
     {
         $contentData = Article::where('id',$id)->first();
-        $comments = Comment::orderBy('id','desc')->paginate(10);
+        $comments = Comment::orderBy('id','desc')->paginate(5);
         return view('home.content',[
             'contentData' => $contentData,
             'comments' => $comments,

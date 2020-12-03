@@ -21,7 +21,6 @@
     <meta name="msapplication-TileColor" content="#0e90d2">
     <link rel="stylesheet" href="/static/home/assets/css/amazeui.min.css">
     <link rel="stylesheet" href="/static/home/assets/css/app.css">
-
     <style>
         .links li{
             list-style: none;
@@ -42,22 +41,29 @@
         .links li:hover {
             background-color: #ccc;
         }
-        .disabled {
-            border-left: 1px solid #ddd;;
-        }
     </style>
 </head>
 
 <body id="blog">
 
-<header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
-    <div class="am-u-sm-8 am-u-sm-centered">
+<header class="am-g am-g-fixed blog-fixed blog-header">
+    <div class="am-u-sm-8">
         <img src="/static/home/assets/i/logo.jpg" alt="我的Logo"/>
     </div>
-    <div style="" class="log-re">
-        <a style="background-color: #0e90d2;" href="{{action('Admin\LoginController@login')}}" class="am-btn am-btn-default am-radius log-button">登录</a>
-        <a style="background-color: #0e90d2;" href="{{action('Admin\LoginController@rel')}}" class="am-btn am-btn-default am-radius log-button">注册</a>
+    <div style="line-height: 122px;right: 20%" class="log-re">
+        <a style="background-color: #FF4081;" href="{{action('Admin\LoginController@login')}}" class="am-btn am-btn-default am-radius log-button">登录</a>
+        <a style="background-color: #FF4081;" href="{{action('Admin\LoginController@rel')}}" class="am-btn am-btn-default am-radius log-button">注册</a>
+
+
+        <form style="float: left" action="{{action('Home\IndexController@index')}}" method="get" class="am-topbar-right am-form-inline" role="search">
+            <div class="am-form-group">
+                <input type="text" style="width: 350px;" name="search" class="am-form-field am-input-sm" placeholder="搜索">
+            </div>
+            <button style="background-color: #0e90d2;" class="am-btn am-btn-default am-radius log-button">搜索</button>
+        </form>
     </div>
+
+
 </header>
 <hr>
 <!-- nav start -->
@@ -65,13 +71,26 @@
 
     <div class="am-collapse am-topbar-collapse" id="blog-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li ><a href="#">首页</a></li>
+            <li ><a href="{{action('Home\IndexController@index')}}" class="blog-tag">首页</a></li>
+            <li ><a href="{{action('Admin\LoginController@login')}}" class="blog-tag">发表文章</a></li>
+            <li > <a href="{{action('Home\IndexController@index',['search' => 'PHP'])}}" class="blog-tag">PHP</a></li>
+            <li > <a href="{{action('Home\IndexController@index',['search' => 'Laravel框架'])}}" class="blog-tag">Laravel框架</a></li>
+            <li > <a href="{{action('Home\IndexController@index',['search' => '服务器'])}}" class="blog-tag">服务器</a></li>
+            <li > <a href="{{action('Home\IndexController@index',['search' => 'MVC'])}}" class="blog-tag">MVC</a></li>
+            <li > <a href="{{action('Home\IndexController@index',['search' => 'HTMl'])}}" class="blog-tag">HTML</a></li>
+            <li > <a href="{{action('Home\IndexController@index',['search' => 'JavaScript'])}}" class="blog-tag">JavaScript</a></li>
+            <li >
+            </li>
         </ul>
-        <form action="{{'Home\IndexController@index'}}" method="get" class="am-topbar-form am-topbar-right am-form-inline" role="search">
-            <div class="am-form-group">
-                <input type="text" name="search" class="am-form-field am-input-sm" placeholder="搜索">
-            </div>
-        </form>
+        <div style="float: right" class="about-me">
+            <ul class="am-nav am-nav-pills am-topbar-nav">
+                <li >
+                    <a style="background-color: #0e90d2;" class="blog-tag am-btn am-btn-default am-radius log-button" href="{{action('Home\IndexController@aboutMe')}}" target="_blank">About Me</a>
+
+                </li>
+            </ul>
+
+        </div>
     </div>
 </nav>
 <hr>
@@ -86,7 +105,7 @@
                     <div class="blog-text-center blog-slider-con">
                         <span><a href="" class="blog-color">欢迎访问博客！ &nbsp;</a></span>
                         <h1 class="blog-h-margin"><a href="">在这里你可以:</a></h1>
-                        <p>学习、发表博客、留言博客...
+                        <p>学习、发表文章、发表留言...
                         </p>
                         <span class="blog-bor">2020/11/1</span>
                         <br><br><br><br><br><br><br>
@@ -99,7 +118,7 @@
                     <div class="blog-text-center blog-slider-con">
                         <span><a href="" class="blog-color">欢迎访问博客！ &nbsp;</a></span>
                         <h1 class="blog-h-margin"><a href="">在这里你可以:</a></h1>
-                        <p>学习、发表博客、留言博客...
+                        <p>学习、发表文章、发表留言...
                         </p>
                         <span class="blog-bor">2020/11/1</span>
                     </div>
@@ -111,7 +130,7 @@
                     <div class="blog-text-center blog-slider-con">
                         <span><a href="" class="blog-color">欢迎访问博客！ &nbsp;</a></span>
                         <h1 class="blog-h-margin"><a href="">在这里你可以:</a></h1>
-                        <p>学习、发表博客、留言博客...
+                        <p>学习、发表文章、发表留言...
                         </p>
                         <span class="blog-bor">2020/11/1</span>
                     </div>
@@ -145,35 +164,31 @@
 
                     <div class="blog-sidebar-widget blog-bor">
                         <h2 class="blog-text-center blog-title"><span>联系我们</span></h2>
+                        <!-- 标签 -->
                         <p>
-                            <a href=""><span class="am-icon-github am-icon-fw blog-icon"></span></a>
-                            <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
-                            <a href=""><span class="am-icon-weixin am-icon-fw blog-icon"></span></a>
+                            <a href="https://github.com/le1212123/mylog" target="_blank"><span class="am-icon-github am-icon-fw blog-icon"></span></a>
+                            <a href="{{action('Home\IndexController@aboutMe')}}"><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
+                            <a href="{{action('Home\IndexController@aboutMe')}}"><span class="am-icon-weixin am-icon-fw blog-icon"></span></a>
                         </p>
                     </div>
                     <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
                         <h2 class="blog-title"><span>标签</span></h2>
                         <div class="am-u-sm-12 blog-clear-padding">
-                            <a href="" class="blog-tag">HTML</a>
-                            <a href="" class="blog-tag">程序员</a>
-                            <a href="" class="blog-tag">PHP</a>
-                            <a href="" class="blog-tag">服务器</a>
-                            <a href="" class="blog-tag">MVC</a>
-                            <a href="" class="blog-tag">Laravel框架</a>
-                            <a href="" class="blog-tag">JavaScript</a>
+                            <a href="{{action('Home\IndexController@index',['search' => 'HTMl'])}}" class="blog-tag">HTML</a>
+                            <a href="{{action('Home\IndexController@index',['search' => '程序员'])}}" class="blog-tag">程序员</a>
+                            <a href="{{action('Home\IndexController@index',['search' => 'PHP'])}}" class="blog-tag">PHP</a>
+                            <a href="{{action('Home\IndexController@index',['search' => '服务器'])}}" class="blog-tag">服务器</a>
+                            <a href="{{action('Home\IndexController@index',['search' => 'MVC'])}}" class="blog-tag">MVC</a>
+                            <a href="{{action('Home\IndexController@index',['search' => 'Laravel框架'])}}" class="blog-tag">Laravel框架</a>
+                            <a href="{{action('Home\IndexController@index',['search' => 'JavaScript'])}}" class="blog-tag">JavaScript</a>
                         </div>
                     </div>
             </article>
         @endforeach
+
         <div class="links">
-            {{$articleDatas->links()}}
+            {{$articleDatas->appends(['search' => $search])->links()}}
         </div>
-
-
-        {{--        <ul class="am-pagination">--}}
-        {{--            <li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>--}}
-        {{--            <li class="am-pagination-next"><a href="">Next &raquo;</a></li>--}}
-        {{--        </ul>--}}
     </div>
 
 </div>
@@ -185,9 +200,9 @@
     <div class="am-u-sm-12 am-u-md-4- blog-text-center">
         <h3>社交账号</h3>
         <p>
-            <a href=""><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
-            <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon blog-icon"></span></a>
-            <a href=""><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
+            <a href="https://github.com/le1212123/mylog" target="_blank"><span class="am-icon-github am-icon-fw blog-icon blog-icon"></span></a>
+            <a href="{{action('Home\IndexController@aboutMe')}}"><span class="am-icon-qq am-icon-fw am-primary blog-icon blog-icon"></span></a>
+            <a href="{{action('Home\IndexController@aboutMe')}}"><span class="am-icon-weixin am-icon-fw blog-icon blog-icon"></span></a>
         </p>
     </div>
     <div class="blog-text-center">© 2020 滚学球</div>
@@ -207,7 +222,7 @@
 <![endif]-->
 <script src="/static/home/assets/js/amazeui.min.js"></script>
 <script>
-{{--  img的src属性保存到cookie  --}}
+            {{--  img的src属性保存到cookie  --}}
     var acicle = document.querySelectorAll('article');
     var abc = document.querySelectorAll('.abc');
     var content = document.querySelectorAll('#link-content')
@@ -235,8 +250,11 @@
             num = this.getAttribute('index')
             setCookie('imgurl',res[num],1);
         }
-
     }
+
+
+    var page = document.querySelector('.pagination');
+    page.children[0].style.borderLeft = '1px solid #ddd';
 </script>
 </body>
 </html>

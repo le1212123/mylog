@@ -1,98 +1,92 @@
 
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>小乐博客</title>
+    <title>注册账号</title>
 
-    <!-- Set render engine for 360 browser -->
-    <meta name="renderer" content="webkit">
-
-    <!-- No Baidu Siteapp-->
-    <meta http-equiv="Cache-Control" content="no-siteapp"/>
-
-    <link rel="icon" type="image/png" href="/static/home/assets/i/app-icon72x72@2x.png">
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="/static/home/assets/i/app-icon72x72@2x.png">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-static-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-    <link rel="apple-touch-icon-precomposed" href="/static/home/assets/i/app-icon72x72@2x.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
-    <meta name="msapplication-TileColor" content="#0e90d2">
-
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-
-    <link rel="stylesheet" href="/static/home/assets/css/amazeui.min.css">
-    <link rel="stylesheet" href="/static/home/assets/css/app.css">
+    <link rel="stylesheet" href="/static/admin/css/style.css">
+    <style>
+        .foot {
+            top: 420px;
+        }
+        form {
+            height: 380px;
+        }
+        .text {
+            font-size: 20px;
+            color: #fff;
+        }
+    </style>
 </head>
-<body>
-<header>
-    <div class="log-header">
-    </div>
-    <div class="log-re">
-        <a style="color: #fff" href="{{action('Admin\LoginController@login')}}" class="am-btn am-btn-default am-radius log-button">登 录</a>
-    </div>
-</header>
 
-<div class="log">
-    <div class="am-g">
-        <div class="am-u-lg-3 am-u-md-6 am-u-sm-8 am-u-sm-centered log-content">
-            @if(count($errors) > 0)
-                @foreach($errors->all() as $error)
-                <div class="log-alert am-alert am-alert-danger am-radius" style="top: 61px;height: 38px;line-height: 38px">{{$error}}</div>
-                @endforeach
-            @endif
-            @if(session('errMsg'))
-                    <div class="log-alert am-alert am-alert-danger am-radius" style="top: 61px;height: 38px;line-height: 38px">{{session('errMsg')}}</div>
-                @endif
-            <h1 class="log-title am-animation-slide-top">注册账号</h1>
-            <br>
-            <form class="am-form" id="log-form" action="/admin/rel" method="post">
-                {{csrf_field()}}
-                <div class="am-input-group am-radius am-animation-slide-left">
-                    <input type="text" name="username" value="{{old('username')}}" id="doc-vld-email-2-1" class="am-radius" data-validation-message="请输入账号" placeholder="账号" required/>
-                    <span class="am-input-group-label log-icon am-radius"><i class="am-icon-user am-icon-sm am-icon-fw"></i></span>
-                </div>
-                <br>
-                <div class="am-input-group am-animation-slide-left log-animation-delay">
-                    <input type="password" name="pwd" id="log-password" class="am-form-field am-radius log-input" placeholder="密码" minlength="6" required>
-                    <span class="am-input-group-label log-icon am-radius"><i class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
-                </div>
-                <br>
-                <div class="am-input-group am-animation-slide-left log-animation-delay-a">
-                    <input type="password" name="pwd2" data-equal-to="#log-password" class="am-form-field am-radius log-input" placeholder="确认密码" data-validation-message="请确认密码一致" required>
-                    <span class="am-input-group-label log-icon am-radius"><i class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
-                </div>
-                <br>
-                <button type="submit" class="am-btn am-btn-primary am-btn-block am-btn-lg am-radius am-animation-slide-bottom log-animation-delay-b">注 册</button>
-            </form>
-            <div style="font-size: 20px;padding-top: 20px">注册提交后请联系滚学球通过注册</div>
+<body>
+
+<div class="dwo">
+    <div class="panda">
+        <div class="ear"></div>
+        <div class="face">
+            <div class="eye-shade"></div>
+            <div class="eye-white">
+                <div class="eye-ball"></div>
+            </div>
+            <div class="eye-shade rgt"></div>
+            <div class="eye-white rgt">
+                <div class="eye-ball"></div>
+            </div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+        </div>
+        <div class="body"> </div>
+        <div class="foot">
+            <div class="finger"></div>
+        </div>
+        <div class="foot rgt">
+            <div class="finger"></div>
         </div>
     </div>
-    <footer class="log-footer">
-        © 2020 滚学球
-    </footer>
+    <form class="am-form" id="log-form" action="/admin/rel" method="post">
+        {{csrf_field()}}
+
+        @if(count($errors) > 0)
+            @foreach($errors->all() as $error)
+                <div class="log-alert am-alert am-alert-danger am-radius" style="top: 61px;height: 38px;line-height: 38px">{{$error}}</div>
+            @endforeach
+        @endif
+        @if(session('errMsg'))
+            <div class="log-alert am-alert am-alert-danger am-radius" style="margin-bottom: 5px;height: 38px;line-height: 38px;background-color: #FF4081">{{session('errMsg')}}</div>
+        @endif
+
+        <div class="hand"></div>
+        <div class="hand rgt"></div>
+        <div class="login_link">
+            <a class="btn"  href="{{action('Admin\LoginController@login')}}">登录</a>
+        </div>
+
+
+        <h1>注册账号</h1>
+        <div class="form-group">
+            <input type="text"  name="username" value="{{old('username')}}" required="required" class="form-control">
+            <label class="form-label">用户名</label>
+        </div>
+        <div class="form-group">
+            <input type="password" name="pwd" id="log-password" required="required" class="form-control am-form-field am-radius log-input">
+            <label class="form-label">密码</label>
+        </div>
+        <div class="form-group">
+            <input type="password" name="pwd2" id="password" data-equal-to="#log-password" required="required" class="form-control am-form-field am-radius log-input">
+            <label class="form-label">确认密码</label>
+            <p class="alert">验证未通过！</p>
+            <button class="btn">注 册</button>
+        </div>
+
+    </form>
+    <div class="text">注册提交后请联系滚学球通过注册</div>
+
 </div>
 
-
-
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="/static/home/assets/js/jquery.min.js"></script>
+<script src="/static/admin/js/jquery.min.js"></script>
+<script src="/static/admin/js/relScript.js"></script>
 <!--<![endif]-->
 <!--[if lte IE 8 ]>
 <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
@@ -101,5 +95,9 @@
 <![endif]-->
 <script src="/static/home/assets/js/amazeui.min.js"></script>
 <script src="/static/home/assets/js/app.js"></script>
+<div style="text-align:center;">
+    <p> © 2020 滚学球</p>
+</div>
+
 </body>
 </html>

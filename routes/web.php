@@ -8,6 +8,8 @@ Route::get('/content{id}','Home\ArticleController@content')->where('id','\d+');
 //  添加评论
 Route::post('/comment','Home\ArticleController@addComment')->middleware('verify_login');
 
+Route::get('/about','Home\IndexController@aboutMe');
+
 
 
 
